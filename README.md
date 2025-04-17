@@ -18,16 +18,6 @@
 1. 便签功能：基础便签可临时记录事情，首屏任意位置双击可召唤快捷便签并支持拖拽；框选网页文本或图片后右击可快速保存到便签；首屏添加的便签右击头部可变为时间胶囊。
 
 ### 相关介绍
-https://sspai.com/post/90463
+本仓库fork自https://github.com/mumingfang/jvmaoTab，并二次开发，使其支持firefox，由于不懂javascript所以全部由AI开发。
 
 
-### 使用
-
-```bash
- yarn && yarn build
-```
-
-### 调试
-```bash
- yarn && yarn d
-```

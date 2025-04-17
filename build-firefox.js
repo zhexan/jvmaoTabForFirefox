@@ -41,24 +41,6 @@ exec('npm run build', (error, stdout, stderr) => {
   
   // 在Windows环境下使用PowerShell创建zip文件
   const zipCommand = `powershell -command "Compress-Archive -Path '${distDir.replace(/\\/g, '/')}/*' -DestinationPath '${zipFilePath.replace(/\\/g, '/')}' -Force"`;
-
-  // 确保所有文件路径使用正斜杠
-  function normalizeAllPaths(dir) {
-    const files = fs.readdirSync(dir);
-    files.forEach(file => {
-      const filePath = path.join(dir, file);
-      if (fs.lstatSync(filePath).isDirectory()) {
-        normalizeAllPaths(filePath);
-      } else {
-        const content = fs.readFileSync(filePath, 'utf8');
-        const normalizedContent = content.replace(/\\/g, '/');
-        fs.writeFileSync(filePath, normalizedContent);
-      }
-    });
-  }
-
-  // 在创建zip之前规范化所有路径
-  normalizeAllPaths(distDir);
   
   exec(zipCommand, (zipError, zipStdout, zipStderr) => {
     if (zipError) {
@@ -81,8 +63,8 @@ function copyFolderRecursiveSync(source, target) {
 
   // 遍历所有文件和子目录
   files.forEach(file => {
-    const sourcePath = path.join(source, file).replace(/\\/g, '/');
-    const targetPath = path.join(target, file).replace(/\\/g, '/');
+    const sourcePath = path.posix.join(source, file);
+    const targetPath = path.posix.join(target, file);
 
     // 检查是文件还是目录
     if (fs.lstatSync(sourcePath).isDirectory()) {
