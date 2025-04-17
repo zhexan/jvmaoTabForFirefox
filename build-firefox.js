@@ -35,20 +35,20 @@ exec('npm run build', (error, stdout, stderr) => {
   fs.copyFileSync(firefoxManifestPath, targetManifestPath);
   console.log('已替换为Firefox兼容的manifest.json');
   
-  // 4. 创建zip文件
-  const zipFileName = 'jvmao-newtabs-firefox.zip';
-  const zipFilePath = path.join(__dirname, zipFileName);
+  // // 4. 创建zip文件
+  // const zipFileName = 'jvmao-newtabs-firefox.zip';
+  // const zipFilePath = path.join(__dirname, zipFileName);
   
-  // 在Windows环境下使用PowerShell创建zip文件
-  const zipCommand = `powershell -command "Compress-Archive -Path '${distDir.replace(/\\/g, '/')}/*' -DestinationPath '${zipFilePath.replace(/\\/g, '/')}' -Force"`;
+  // // 在Windows环境下使用PowerShell创建zip文件
+  // const zipCommand = `powershell -command "Compress-Archive -Path '${distDir.replace(/\\/g, '/')}/*' -DestinationPath '${zipFilePath.replace(/\\/g, '/')}' -Force"`;
   
-  exec(zipCommand, (zipError, zipStdout, zipStderr) => {
-    if (zipError) {
-      console.error(`打包错误: ${zipError}`);
-      return;
-    }
-    console.log(`Firefox扩展打包完成: ${zipFileName}`);
-  });
+  // exec(zipCommand, (zipError, zipStdout, zipStderr) => {
+  //   if (zipError) {
+  //     console.error(`打包错误: ${zipError}`);
+  //     return;
+  //   }
+  //   console.log(`Firefox扩展打包完成: ${zipFileName}`);
+  // });
 });
 
 // 递归复制文件夹函数

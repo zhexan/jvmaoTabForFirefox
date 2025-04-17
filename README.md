@@ -19,5 +19,20 @@
 
 ### 相关介绍
 本仓库fork自https://github.com/mumingfang/jvmaoTab，并二次开发，使其支持firefox，由于不懂javascript所以全部由AI开发。
+### 安装
+```bash
+npm install // 安装依赖
+```
+```bash
+node build-firefox.js // firefox插件
+```
+### 使用
+**临时使用**
+打开Firefox浏览器，输入about:debugging，点击“此 Firefox”，点击“载入临时附加组件”，选择manifest.json文件，点击“打开”，插件即可使用。
+**永久使用**
+如果您想将其安装到Firefox的扩展程序中。则需要在开发者中心提交审核。我提交了，但未公开。但我提供了一个版本在根目录下，将jvmaoTab.xpi文件拖入附加组件管理器中即可。
+### 未解决问题
+网站图标无法显示
+
 
 
