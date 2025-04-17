@@ -11,8 +11,8 @@ import { IconAppWindow, IconPlus } from "@tabler/icons-react";
 import { ExclamationCircleFilled } from "@ant-design/icons";
 import styled from "styled-components";
 import { Button, Modal } from "antd";
+import { tabs, windows } from "~/utils/browser-polyfill";
 
-const chrome = window.chrome;
 Sortable.mount(new MultiDrag());
 
 const ListNullWrap = styled.div`
@@ -51,7 +51,7 @@ const updateTabList = (list = []) => {
 
 const getTabList = (id) => {
   return new Promise((resolve, reject) => {
-    chrome.tabs.query(
+    tabs.query(
       {
         windowId: id,
       },
@@ -97,7 +97,7 @@ const TabList = (props) => {
           getTabList(id).then((res) => {
             res.forEach(v => {
               // 关闭标签页
-              chrome.tabs.remove(v.id);
+              tabs.remove(v.id);
             })
           });
         }
@@ -115,7 +115,7 @@ const TabList = (props) => {
         list.forEach(obj => map.delete(obj.id));
         Array.from(map.values()).forEach(v => {
           // 关闭标签页
-          chrome.tabs.remove(v.id);
+          tabs.remove(v.id);
         })
       });
     }
@@ -123,7 +123,7 @@ const TabList = (props) => {
   }, 150)
 
   React.useEffect(() => {
-    chrome.windows.getCurrent((v) => {
+    windows.getCurrent((v) => {
       if (v.id) {
         setID(v.id);
       }

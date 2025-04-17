@@ -12,6 +12,7 @@ import _ from "lodash";
 import {
   getID
 } from "~/utils";
+import { runtime } from "~/utils/browser-polyfill";
 
 const localStorageKeys = ['bgType', 'bg2Type', 'bgBase64', 'bg2Base64', 'webdavVersion'];
 
@@ -138,7 +139,7 @@ export default class OptionStores {
 
           this.isInit = true;
 
-          chrome.runtime.sendMessage({
+          runtime.sendMessage({
             type: "getOption",
           }, (response) => {
             for (const key in response) {
@@ -203,7 +204,7 @@ export default class OptionStores {
     try {
       const defaultOption = this.getNewOptionToValue(_v, this.item);
 
-      chrome.runtime.sendMessage({
+      runtime.sendMessage({
         type: "getOption",
       }, (response) => {
 
@@ -285,7 +286,7 @@ export default class OptionStores {
 
           });
           console.log('%c [ data ]-248', 'font-size:13px; background:pink; color:#bf2c9f;', data)
-          chrome.runtime.sendMessage({
+          runtime.sendMessage({
             type: "setOptions",
             data,
           }, function (response) {
@@ -305,7 +306,7 @@ export default class OptionStores {
     this.item[key] = value;
     return this.setOption(key, value).then(() => {
       if (save) {
-        chrome.runtime.sendMessage({
+        runtime.sendMessage({
           type: "setOptions",
           data: {
             [key]: value

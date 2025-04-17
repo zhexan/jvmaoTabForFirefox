@@ -1,0 +1,33 @@
+{
+  "manifest_version": 2,
+  "name": "橘猫起始页",
+  "version": "1.2.9",
+  "description": "起始页还可以是这样的",
+  "homepage_url": "https://www.jvmao.net",
+  "icons": {
+    "16": "16x16.png",
+    "48": "48x48.png",
+    "128": "128x128.png"
+  },
+  "chrome_url_overrides": {
+    "newtab": "src/newtab/index.html"
+  },
+  "permissions": [
+    "<all_urls>",
+    "tabs",
+    "favicon",
+    "storage",
+    "contextMenus"
+  ],
+  "web_accessible_resources": [
+    "_favicon/*"
+  ],
+ 
+  "content_scripts": [{
+    "matches": ["<all_urls>"],
+    "js": ["src/content/main.js"],
+    "css": [],
+    "run_at": "document_end"
+  }],
+  "content_security_policy": "script-src 'self'; object-src 'self';"
+}

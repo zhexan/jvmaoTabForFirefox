@@ -1,10 +1,11 @@
 import React from "react";
 import _ from "lodash";
+import { runtime } from "../newtab/utils/browser-polyfill";
 
 const App = () => {
 
     React.useEffect(() => {
-        chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
+        runtime.onMessage.addListener(function (request, sender, sendResponse) {
             switch (request.type) {
                 case "onTextMenuCS":
                     var selection = window.getSelection();

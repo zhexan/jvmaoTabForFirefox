@@ -1,4 +1,5 @@
 import React from "react";
+import { runtime } from "~/utils/browser-polyfill";
 
 const FavIconIcon = (props) => {
   const { url, size = 30, style = {}, onlyDomain = false } = props;
@@ -10,7 +11,7 @@ const FavIconIcon = (props) => {
         u = window.location.href;
       }
       const _u = new URL(u);
-      const url = new URL(window.chrome.runtime.getURL("/_favicon/"));
+      const url = new URL(runtime.getURL("/_favicon/"));
       url.searchParams.set("pageUrl", onlyDomain ? _u.origin : u);
       url.searchParams.set("size", size * 2);
       return url.toString();

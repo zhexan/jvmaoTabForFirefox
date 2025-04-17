@@ -19,6 +19,7 @@ import {
   MD5
 } from 'crypto-js';
 import Storage from "~/utils/storage";
+import { storage } from '~/utils/browser-polyfill';
 
 const field = ["id", "content", "fromUrl", "sort", "state"];
 
@@ -262,7 +263,7 @@ export default class NoteStores {
     if (!db.isOpen()) {
       await db.open();
     }
-    chrome.storage.local.get(['contextMenusData'], (res) => {
+    storage.local.get(['contextMenusData'], (res) => {
       if (res.contextMenusData?.length > 0) {
         const notes = [];
         const cache_notes = {};
@@ -294,7 +295,7 @@ export default class NoteStores {
           notes.push(v);
         }
         this.addNote(notes).then((res) => {
-          chrome.storage.local.remove(['contextMenusData']);
+          storage.local.remove(['contextMenusData']);
         })
       }
     });

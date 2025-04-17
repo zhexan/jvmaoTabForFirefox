@@ -19,13 +19,9 @@ const manifest = {
     matches: ["<all_urls>"],
     extension_ids: ["*"],
   }],
-  background: {
-    service_worker: "src/background/main.js",
-    browser_action: {}
-  },
   content_scripts: [{
     matches: ["<all_urls>"],
-    js: ["src/content/index.html"],
+    js: ["src/content/main.js"],
     css: [],
     run_at: "document_end",
   }, ],

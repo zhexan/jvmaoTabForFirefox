@@ -7,6 +7,7 @@
     "d": "vite build --watch",
     "dev": "vite",
     "build": "vite build",
+    "build:firefox": "node build-firefox.js",
     "lint": "eslint src --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview"
   },

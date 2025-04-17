@@ -22,7 +22,7 @@ export default defineConfig({
         ...manifest,
       },
       additionalInputs: {
-        scripts: [
+        html: [
           {
             fileName: 'src/content/index.html',
             webAccessible: true,
@@ -63,10 +63,6 @@ export default defineConfig({
     sourcemap: false,
     // minify: "terser",
     rollupOptions: {
-      input: {
-        content: 'src/content/index.html',
-        // options: resolve(__dirname, "./src/options.html"),
-      },
       output: {
         chunkFileNames: "static/js/[name]-[hash].js",
         entryFileNames: "static/js/[name]-[hash].js",

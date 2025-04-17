@@ -5,6 +5,7 @@ import { IconArrowBarDown } from "@tabler/icons-react";
 import styled from "styled-components";
 import FavIconIcon from "../newtab/scenes/public/FavIconIcon";
 import _ from "lodash";
+import { runtime } from "../newtab/utils/browser-polyfill";
 
 const href = new URL(window.location.href);
 
@@ -102,7 +103,7 @@ const So = () => {
 
     React.useEffect(() => {
 
-        chrome.runtime.sendMessage({
+        runtime.sendMessage({
             type: "getOption",
         }, (res) => {
             // console.log('%c [ res ]-136', 'font-size:13px; background:pink; color:#bf2c9f;', res)
