@@ -34,6 +34,7 @@ exec('npm run build', (error, stdout, stderr) => {
   
   fs.copyFileSync(firefoxManifestPath, targetManifestPath);
   console.log('已替换为Firefox兼容的manifest.json');
+  console.log('Firefox扩展打包完成');
   
   // // 4. 创建zip文件
   // const zipFileName = 'jvmao-newtabs-firefox.zip';
